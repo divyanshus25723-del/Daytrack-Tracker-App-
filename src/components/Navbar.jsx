@@ -3,9 +3,9 @@ import { NavLink } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav className="nav">
+    <nav className="nav" role="navigation" aria-label="Main navigation">
       <div className="nav-brand">
-        <span className="nav-logo">DT</span>
+        <a href="/" aria-label="DayTrack home" className="nav-logo" title="DayTrack">DT</a>
         <div>
           <h2>DayTrack</h2>
           <p>Stay focused, finish strong.</p>

@@ -15,12 +15,13 @@ function TaskForm({ title, category, priority, dueDate, onTitleChange, onCategor
           onChange={onTitleChange}
           placeholder="What are you working on?"
           required
+          aria-label="Task title"
         />
       </div>
 
       <div>
         <label htmlFor="task-category">Category</label>
-        <select id="task-category" value={category} onChange={onCategoryChange}>
+        <select id="task-category" value={category} onChange={onCategoryChange} aria-label="Task category">
           {CATEGORY_OPTIONS.map((option) => (
             <option key={option} value={option}>{option}</option>
           ))}
@@ -29,7 +30,7 @@ function TaskForm({ title, category, priority, dueDate, onTitleChange, onCategor
 
       <div>
         <label htmlFor="task-priority">Priority</label>
-        <select id="task-priority" value={priority} onChange={onPriorityChange}>
+        <select id="task-priority" value={priority} onChange={onPriorityChange} aria-label="Task priority">
           {PRIORITY_OPTIONS.map((option) => (
             <option key={option} value={option}>{option}</option>
           ))}
@@ -38,10 +39,10 @@ function TaskForm({ title, category, priority, dueDate, onTitleChange, onCategor
 
       <div>
         <label htmlFor="task-due">Due</label>
-        <input id="task-due" type="date" value={dueDate} onChange={onDueDateChange} />
+        <input id="task-due" type="date" value={dueDate} onChange={onDueDateChange} aria-label="Task due date" />
       </div>
 
-      <button type="submit" className="primary">Add task</button>
+      <button type="submit" className="primary" aria-label="Add task">Add task</button>
     </form>
   );
 }

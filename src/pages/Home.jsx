@@ -56,10 +56,10 @@ function Home({ activities = [] }) {
               <p className="empty-state">No categories yet.</p>
             ) : (
               Object.entries(countsByCategory).map(([category, count]) => (
-                <div key={category} className="category-card">
+                <article key={category} className="category-card" aria-label={`${count} ${category} tasks`}>
                   <h4>{category}</h4>
-                  <span>{count} tasks</span>
-                </div>
+                  <span aria-label={`Count: ${count}`}>{count} tasks</span>
+                </article>
               ))
             )}
           </div>
@@ -70,11 +70,11 @@ function Home({ activities = [] }) {
           {upcomingTasks.length === 0 ? (
             <p className="empty-state">No upcoming deadlines yet.</p>
           ) : (
-            <ul className="upcoming-list">
+            <ul className="upcoming-list" aria-label="Upcoming tasks">
               {upcomingTasks.map((task) => (
-                <li key={task.id}>
+                <li key={task.id} aria-label={`${task.title}, due ${new Date(task.dueDate).toLocaleDateString("en-US", { month: "short", day: "numeric" })}`}>
                   <strong>{task.title}</strong>
-                  <span>{new Date(task.dueDate).toLocaleDateString("en-US", { month: "short", day: "numeric" })}</span>
+                  <time dateTime={task.dueDate}>{new Date(task.dueDate).toLocaleDateString("en-US", { month: "short", day: "numeric" })}</time>
                 </li>
               ))}
             </ul>

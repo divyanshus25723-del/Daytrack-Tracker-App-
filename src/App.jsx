@@ -34,10 +34,10 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="app">
+      <div className="app" role="application" aria-label="DayTrack task management application">
         <Navbar />
 
-        <main className="content">
+        <main className="content" role="main" aria-label="Application content">
           <Routes>
             <Route path="/" element={<Home activities={activities} />} />
             <Route

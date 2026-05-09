@@ -81,18 +81,21 @@ function Tracker({ activities = [], addActivity, toggleDone, deleteActivity, cle
                 placeholder="Search tasks..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
+                aria-label="Search tasks by title"
               />
             </div>
 
             <div className="filter-group">
-              <label>Category</label>
-              <div className="filter-buttons">
+              <label id="category-filter-label">Category</label>
+              <div className="filter-buttons" role="group" aria-labelledby="category-filter-label">
                 {FILTER_OPTIONS.map((option) => (
                   <button
                     key={option}
                     type="button"
                     className={filter === option ? "pill active" : "pill"}
                     onClick={() => setFilter(option)}
+                    aria-pressed={filter === option}
+                    aria-label={`Filter by ${option} category`}
                   >
                     {option}
                   </button>
@@ -126,7 +129,7 @@ function Tracker({ activities = [], addActivity, toggleDone, deleteActivity, cle
 
       <div className="task-header">
         <h2>Task list</h2>
-        <button type="button" className="secondary" onClick={clearCompleted}>
+        <button type="button" className="secondary" onClick={clearCompleted} aria-label="Delete all completed tasks">
           Clear completed
         </button>
       </div>

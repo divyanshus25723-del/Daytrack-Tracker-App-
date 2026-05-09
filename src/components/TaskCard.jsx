@@ -19,15 +19,25 @@ function TaskCard({ task, onToggle, onDelete }) {
       <h3>{task.title}</h3>
 
       <div className="task-meta">
-        <span>📅 {dueText}</span>
+        <span>📅 {task.dueDate ? <time dateTime={task.dueDate}>{dueText}</time> : dueText}</span>
         <span>{task.done ? "Completed" : "In progress"}</span>
       </div>
 
       <div className="card-actions">
-        <button type="button" onClick={() => onToggle(task.id)}>
+        <button
+          type="button"
+          aria-pressed={task.done ? "true" : "false"}
+          onClick={() => onToggle(task.id)}
+          aria-label={task.done ? `Mark ${task.title} as not completed` : `Mark ${task.title} as completed`}
+        >
           {task.done ? "↺ Undo" : "✔ Complete"}
         </button>
-        <button type="button" className="secondary" onClick={() => onDelete(task.id)}>
+        <button
+          type="button"
+          className="secondary"
+          onClick={() => onDelete(task.id)}
+          aria-label={`Remove ${task.title}`}
+        >
           ✕ Remove
         </button>
       </div>

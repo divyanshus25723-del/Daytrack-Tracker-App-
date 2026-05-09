@@ -52,10 +52,10 @@ function Reports({ activities = [] }) {
               <p className="empty-state">No category data yet.</p>
             ) : (
               Object.entries(categories).map(([category, count]) => (
-                <div key={category} className="category-card">
+                <article key={category} className="category-card" aria-label={`${count} tasks in ${category} category`}>
                   <h4>{category}</h4>
                   <span>{count} tasks</span>
-                </div>
+                </article>
               ))
             )}
           </div>
@@ -68,10 +68,10 @@ function Reports({ activities = [] }) {
               <p className="empty-state">No priority data yet.</p>
             ) : (
               Object.entries(priorities).map(([priority, count]) => (
-                <div key={priority} className="category-card">
+                <article key={priority} className="category-card" aria-label={`${count} ${priority} priority tasks`}>
                   <h4>{priority}</h4>
                   <span>{count} tasks</span>
-                </div>
+                </article>
               ))
             )}
           </div>
